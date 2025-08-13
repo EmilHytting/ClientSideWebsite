@@ -1,0 +1,236 @@
+/* Minimalistisk opret-vindue til bil */
+.car-create-box {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(37, 99, 235, 0.1);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 420px;
+  margin: 2rem auto;
+  border: 1.5px solid #dbeafe;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.car-create-box h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.car-create-box .input-row {
+  margin-bottom: 1.1rem;
+}
+.car-create-box label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #1746a2;
+}
+.car-create-box input[type="text"],
+.car-create-box input[type="number"] {
+  border-radius: 0.5rem;
+  border: 1px solid #b6d4fe;
+  background: #fafdff;
+  padding: 0.5rem 0.9rem;
+  font-size: 1rem;
+  width: 100%;
+  transition: border 0.2s;
+}
+.car-create-box input:focus {
+  border: 1.5px solid #2563eb;
+  outline: none;
+}
+.car-create-box .form-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+@media (max-width: 600px) {
+  .car-create-box {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    max-width: 98vw;
+  }
+  .car-create-box .form-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+}
+/* Pagination styling */
+#pagination {
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+  padding: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+#pagination button {
+  border-radius: 1.5rem;
+  font-weight: 500;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.4rem 1.2rem;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.08);
+}
+#pagination button:disabled {
+  background: #b6d4fe;
+  color: #fff;
+  opacity: 0.7;
+}
+#pagination button:not(:disabled):hover {
+  background: #1746a2;
+  color: #fff;
+}
+#pagination span {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #2563eb;
+  letter-spacing: 0.5px;
+}
+body {
+  background-color: #f4f8fb;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+main,
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.navbar {
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: #e3f0fa !important;
+}
+
+.nav-link.active,
+.nav-item .active {
+  background-color: #2563eb !important;
+  color: #fff !important;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+}
+
+form#carForm {
+  background: #fafdff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  border: 1px solid #dbeafe;
+  max-width: 100%;
+}
+
+form#carForm label {
+  font-weight: 500;
+}
+
+form#carForm input.form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #b6d4fe;
+  background: #fff;
+  transition: border 0.2s;
+}
+form#carForm input.form-control:focus {
+  border: 1.5px solid #2563eb;
+  box-shadow: 0 0 0 2px #dbeafe;
+}
+
+form#carForm .btn {
+  min-width: 140px;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+form#carForm .form-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+@media (max-width: 600px) {
+  form#carForm .form-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  form#carForm .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+table.table {
+  background: #fff;
+  border-radius: 1rem;
+  overflow-x: auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  border: 1px solid #dbeafe;
+  min-width: 600px;
+}
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  form#carForm {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+  table.table {
+    font-size: 0.95rem;
+    min-width: 400px;
+  }
+  #pagination {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+table.table thead tr.bg-primary th {
+  font-style: italic;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  background: #2563eb !important;
+  color: #fff !important;
+}
+
+table.table th,
+table.table td {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+table.table tbody tr {
+  transition: background 0.2s;
+}
+table.table tbody tr:hover {
+  background: #e0f2fe;
+}
+
+.btn-danger.btn-sm {
+  border-radius: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: #22c55e !important;
+  border: none;
+  color: #fff;
+  transition: background 0.2s;
+}
+.btn-danger.btn-sm:hover {
+  background: #16a34a !important;
+}
+
+#carCount,
+#carModelCount {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #2563eb;
+}
