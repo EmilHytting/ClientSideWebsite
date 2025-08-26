@@ -1,23 +1,54 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll("#mainNav .nav-link");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      navLinks.forEach((l) => l.classList.remove("active", "bg-danger"));
-      this.classList.add("active", "bg-danger");
-    });
+// --- jQuery loader til API-menu ---
+$(document).on('click', '.dropdown-item[data-htmlpageurl]', function (e) {
+  e.preventDefault();
+  var htmlUrl = $(this).data('htmlpageurl');
+  var jsUrl = $(this).data('jsmoduleurl');
+  var callback = $(this).data('callbackfunctionname');
+  var targetClass = $(this).data('targetclassname');
+
+  // Indlæs HTML ind i det ønskede element
+  $('.' + targetClass).load(htmlUrl, function () {
+    // Indlæs JS-modul og kør callback hvis angivet
+    if (jsUrl) {
+      $.getScript(jsUrl, function () {
+        if (callback && typeof window[callback] === 'function') {
+          window[callback]();
+        }
+      });
+    }
   });
 });
 
-// --- Navigation: Gør det aktive menupunkt synligt ---
-document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll("#mainNav .nav-link");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      // Fjern .active fra alle links
-      navLinks.forEach((l) => l.classList.remove("active", "bg-danger"));
-      // Tilføj .active til det valgte link
-      this.classList.add("active", "bg-danger");
-    });
+
+// jQuery kode.
+$(document).ready(function () {
+  $("#mainNav .nav-link").on("click", function () {
+    $("#mainNav .nav-link").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  
+
+
+  $("#carTableBody").hide().fadeIn(1000);
+
+
+  if ($("#rowInfo").length === 0) {
+    $("<div id='rowInfo' style='display:none; margin-top:10px; font-weight:bold; color:#1746a2;'></div>").insertAfter("table.table");
+  }
+  $(document).on("mouseenter", "#carTableBody tr", function () {
+    $(this).addClass("row-highlight row-border");
+    var carName = $(this).find("td").eq(0).text();
+    $("#rowInfo").text("Du holder musen over bilen: " + carName).fadeIn(150);
+  });
+  $(document).on("mouseleave", "#carTableBody tr", function () {
+    $(this).removeClass("row-highlight row-border");
+    $("#rowInfo").fadeOut(150);
+  });
+
+  // Nulstiller formlen. 
+  $("#resetBtn").on("click", function () {
+    $("#carForm")[0].reset();
   });
 });
 
@@ -207,5 +238,4 @@ document.getElementById("resetBtn").addEventListener("click", function () {
 });
 
 
-// Vis tabellen første gang når siden indlæses
 renderTable();
